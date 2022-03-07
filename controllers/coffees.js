@@ -15,6 +15,27 @@ function index(req, res) {
   })
 }
 
+function newCoffee(req, res) {
+  res.render('coffees/new', {
+    title: "Add New Coffee Beans"
+  })
+}
+
+function create(req, res) {
+  req.body.owner = req.user.profile._id
+  const coffee = new Coffee(req.body)
+  Coffee.create(req.body)
+  .then(coffee => {
+    res.redirect('/coffees')
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/coffees')
+  })
+}
+
 export {
-  index
+  index,
+  newCoffee as new,
+  create
 }

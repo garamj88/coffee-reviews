@@ -4,8 +4,9 @@
 <section>
   <h1>Coffee Reviews</h1>
   <h2>We have reviewed <%= coffees.length %> coffees as of <%= time %></h2>
-  <h2>Can't find the coffee beans you want to review?
-    Add a new one to share your experience with us! anchor button </h2>
+  <h3>Can't find the coffee beans you want to review?<br><a href="/coffees/new">Add new coffee beans</a> and share your experience with us!</h3>
+
+  <!-- change to card container -->
   <ul>
     <% coffees.forEach(coffee=> { %>
       <li>

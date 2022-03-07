@@ -1,0 +1,55 @@
+<%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/coffees/new.css" />
+<%- include('../partials/nav') %>
+
+<main>
+  <h1><%= title %></h1>
+  <form id="new-form" action="/coffees" method="POST">
+
+    <label for="name-input">Name</label>
+    <input type="text" name="name" id="name-input" placeholder="Required">
+
+    <label for="producer-input">Producer</label>
+    <input type="text" name="producer" id="producer-input">
+
+    <label for="region-input">Region</label>
+    <input type="text" name="region" id="region-input" placeholder="Required">
+
+    <label for="country-input">Country</label>
+    <input type="text" name="country" id="country-input" placeholder="Required">
+
+    <label for="process-select">Process</label>
+    <select name="process" id="process-select">
+      <option value="Washed">Washed</option>
+      <option value="Natural">Natural</option>
+    </select>
+
+    <label for="taste1-input">Taste 1</label>
+    <input type="text" name="tasteNote.taste1" id="taste1-input" placeholder="Required">
+    <label for="taste2-input">Taste 2</label>
+    <input type="text" name="tasteNote.taste2" id="taste2-input" placeholder="Required">
+    <label for="taste3-input">Taste 3</label>
+    <input type="text" name="tasteNote.taste3" id="taste3-input" placeholder="Required">
+    <label for="taste4-input">Taste 4</label>
+    <input type="text" name="tasteNote.taste4" id="taste4-input">
+    <label for="taste5-input">Taste 5</label>
+    <input type="text" name="tasteNote.taste5" id="taste5-input">
+
+    <label for="harvest-date-input">Harvest Date</label>
+    <input
+      type="date"
+      name="harvestDate"
+      id="harvest-date-input"
+    />
+
+    <label for="varietal-input">Varietal</label>
+    <input type="text" name="varietal" id="varietal-input">
+
+    <label for="roaster-input">Roaster</label>
+    <input type="text" name="roaster" id="roaster-input" placeholder="Required">
+
+    <button type="submit">Add Beans</button>
+  </form>
+</main>
+
+<%- include('../partials/footer') %>
