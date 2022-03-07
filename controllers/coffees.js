@@ -5,7 +5,8 @@ function index(req, res) {
   .then(coffees => {
     res.render('coffees/index', {
       coffees,
-      title: "Coffee Reviews"
+      title: "Coffee Reviews",
+      time: req.time
     })
   })
   .catch(err => {

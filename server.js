@@ -32,6 +32,10 @@ app.set(
 app.set('view engine', 'ejs')
 
 // middleware
+app.use(function (req, res, next) {
+  req.time = new Date().toLocaleTimeString()
+  next()
+})
 app.use(methodOverride('_method'))
 app.use(logger('dev'))
 app.use(express.json())
