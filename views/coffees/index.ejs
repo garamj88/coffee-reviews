@@ -1,0 +1,14 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<section>
+  <h1>Coffee Reviews</h1>
+  <h2>as of </h2>
+	<ul>
+  <% coffees.forEach(coffee => { %>
+    <li><%= `${coffee.name.toUpperCase()}, ${coffee.} %></li>
+  <% }) %>
+  </ul>
+</section>
+
+<%- include('../partials/footer') %>
