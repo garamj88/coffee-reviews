@@ -34,8 +34,24 @@ function create(req, res) {
   })
 }
 
+function show(req, res) {
+  Coffee.findById(req.params.id)
+  .populate("owner")
+  .then(coffee => {
+    res.render('coffees/show', {
+      coffee,
+      title: coffee.name
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect("/coffees")
+  })
+}
+
 export {
   index,
   newCoffee as new,
-  create
+  create,
+  show
 }

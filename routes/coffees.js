@@ -9,9 +9,11 @@ router.get('/', coffeesCtrl.index)
 
 // GET - localhost:3000/coffees/new
 router.get('/new', isLoggedIn, coffeesCtrl.new)
-
 // POST - localhost:3000/coffees
-router.post('/', coffeesCtrl.create)
+router.post('/', isLoggedIn, coffeesCtrl.create)
+
+// GET - localhost:3000/coffees/:id
+router.get('/:id', isLoggedIn, coffeesCtrl.show)
 
 export {
   router

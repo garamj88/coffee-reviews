@@ -32,11 +32,12 @@ nav {
 
 main {
   display: flex;
-  align-items: center;
+  align-items: left;
   justify-content: center;
   flex-direction: column;
 }
 
-h1 {
+.website-name {
   font-size: 3.6rem;
+  text-align: center;
 }
