@@ -11,7 +11,7 @@ router.get('/', coffeesCtrl.index)
 router.get('/new', isLoggedIn, coffeesCtrl.new)
 
 // POST - localhost:3000/coffees
-router.post('/', isLoggedIn, coffeesCtrl.create)
+router.post('/', coffeesCtrl.create)
 
 export {
   router

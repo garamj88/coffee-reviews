@@ -33,7 +33,7 @@ app.set('view engine', 'ejs')
 
 // middleware
 app.use(function (req, res, next) {
-  req.time = new Date().toLocaleTimeString()
+  req.time = new Date().toLocaleDateString()
   next()
 })
 app.use(methodOverride('_method'))

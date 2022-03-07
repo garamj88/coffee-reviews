@@ -3,17 +3,20 @@
 
 <section>
   <h1>Coffee Reviews</h1>
-  <h2>We have reviewed <%= coffees.length %> coffees as of <%= time %></h2>
-  <h3>Can't find the coffee beans you want to review?<br><a href="/coffees/new">Add new coffee beans</a> and share your experience with us!</h3>
+  <h3>We have reviewed <%= coffees.length %> coffees as of <%= time %></h3>
+  <h4>Can't find the coffee beans you want to review?<br><a href="/coffees/new">Add new coffee beans</a> and share your experience with us!</h4>
 
   <!-- change to card container -->
-  <ul>
     <% coffees.forEach(coffee=> { %>
-      <li>
-        <%= `${coffee.name}` %><br><%= `${coffee.region}, ${coffee.country}` %>
-      </li>
+      <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h2 class="coffee-name"><%= `${coffee.name}` %></h2>
+        <h4 class="coffee-origin"><%= `${coffee.region}, ${coffee.country}` %></h4>
+        <h5 class="card-text"><%= `${coffee.tasteNote.taste1}, ${coffee.tasteNote.taste2}, ${coffee.tasteNote.taste3}` %></h5>
+        <a href="#" class="card-link">Learn More</a>
+      </div>
+    </div>
   <% }) %>
-  </ul>
 
 </section>
 
