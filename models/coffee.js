@@ -5,7 +5,11 @@ const Schema = mongoose.Schema
 // reviewSchema
 const reviewSchema = new Schema({
   comment: String,
-  tasteNote: { type: String, required: true },
+  tastes: {
+    taste1: { type: String, required: true },
+    taste2: { type: String, required: true },
+    taste3: { type: String, required: true },
+  },
   owner: { type: Schema.Types.ObjectId, ref: 'Profile' },
 }, {
   timestamps: true
@@ -29,7 +33,7 @@ const coffeeSchema = new Schema({
   },
   roasters: { type: String, required: true },
   owner: { type: Schema.Types.ObjectId, ref: 'Profile' },
-  review: [reviewSchema]
+  reviews: [reviewSchema]
 }, {
   timestamps: true
 })

@@ -34,7 +34,7 @@ function createCoffee(req, res) {
   })
 }
 
-function show(req, res) {
+function showCoffee(req, res) {
   Coffee.findById(req.params.id)
   .populate("owner")
   .then(coffee => {
@@ -81,11 +81,37 @@ function updateCoffee(req, res) {
   })
 }
 
+function createReview(req, res) {
+  req.body.owner = req.user.profile._id
+  Coffee.findById(req.params.id, function(err, coffee) {
+    coffee.reviews.push(req.body)
+    coffee.save(function(err) {
+      res.redirect(`/coffees/${coffee._id}`)
+    })
+  })
+}
+
+
+
+// function createCoffee(req, res) {
+//   req.body.owner = req.user.profile._id
+//   const coffee = new Coffee(req.body)
+//   Coffee.create(req.body)
+//   .then(coffee => {
+//     res.redirect('/coffees')
+//   })
+//   .catch(err => {
+//     console.log(err)
+//     res.redirect('/coffees')
+//   })
+// }
+
 export {
   index,
   newCoffee,
   createCoffee,
-  show,
+  showCoffee,
   editCoffee,
-  updateCoffee
+  updateCoffee,
+  createReview
 }

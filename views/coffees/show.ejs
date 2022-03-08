@@ -17,7 +17,7 @@
       <h4 class="coffee-producer"><%= coffee.producer %> </h4>
 
       <h4 class="taste-notes">Notes from <%= coffee.roasters %> <span class="roasters-format">roasters</span>:</h4>
-        <h3 class="tastes"><%= `${coffee.tasteNote.taste1}, ${coffee.tasteNote.taste2}, ${coffee.tasteNote.taste3}` %></h3>
+        <h3 class="tastes-all"><%= `${coffee.tasteNote.taste1}, ${coffee.tasteNote.taste2}, ${coffee.tasteNote.taste3}` %></h3>
         <p>Tasted something different? Please share with us in the review!</p>
 
       <h5 class="coffee-varietal">Varietal: <%= coffee.varietal %></h5>
@@ -30,10 +30,27 @@
     </div>
   </div>
 
+  <form action="/coffees/<%= coffee._id %>/reviews"
+  id="add-review-form" method="POST">
+    <label for="users-taste-notes">Please change taste notes if you noticed a different nuance:</label>
+    <div id="users-taste-notes"><br>
+      <label for="taste1-input">Taste 1</label>
+      <input type="text" name="tastes.taste1" id="taste1-input" value="<%= coffee.tasteNote.taste1 %>">
+      <label for="taste2-input">Taste 2</label>
+      <input type="text" name="tastes.taste2" id="taste2-input" value="<%= coffee.tasteNote.taste2 %>">
+      <label for="taste3-input">Taste 3</label>
+      <input type="text" name="tastes.taste3" id="taste3-input" value="<%= coffee.tasteNote.taste3 %>">
+    </div>
 
-<ul class="list-group list-group-flush">
-  <li class="list-group-item">An item</li>
-</ul>
+    <label for="comment-textarea">Comment:</label>
+    <textarea name="comment" id="comment-textarea"></textarea>
+
+    <button type="submit">Add Review</button>
+  </form>
+
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">An item</li>
+  </ul>
 </section>
 
 
