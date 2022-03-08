@@ -16,6 +16,8 @@ router.post('/', isLoggedIn, coffeesCtrl.createCoffee)
 router.get('/:id', isLoggedIn, coffeesCtrl.show)
 // GET - localhost:3000/coffees/:id/edit
 router.get('/:id/edit', isLoggedIn, coffeesCtrl.editCoffee)
+// GET - localhost:3000/coffees/:id/
+router.put("/:id", isLoggedIn, coffeesCtrl.updateCoffee)
 
 export {
   router

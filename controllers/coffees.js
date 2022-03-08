@@ -63,10 +63,29 @@ function editCoffee(req, res) {
   })
 }
 
+function updateCoffee(req, res) {
+  Coffee.findById(req.params.id)
+  .then(coffee => {
+    if (coffee.owner.equals(req.user.profile._id)) {
+      coffee.updateOne(req.body, {new: true})
+      .then(() => {
+        res.redirect(`/coffees/${req.params.id}`)
+      })
+    } else {
+      throw new Error("NOT AUTHORIZED")
+    }
+  })
+  .catch(err => {
+    console.log("the error:", err)
+    res.redirect("/coffees")
+  })
+}
+
 export {
   index,
   newCoffee,
   createCoffee,
   show,
-  editCoffee
+  editCoffee,
+  updateCoffee
 }
