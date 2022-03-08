@@ -21,7 +21,7 @@ function newCoffee(req, res) {
   })
 }
 
-function create(req, res) {
+function createCoffee(req, res) {
   req.body.owner = req.user.profile._id
   const coffee = new Coffee(req.body)
   Coffee.create(req.body)
@@ -49,9 +49,24 @@ function show(req, res) {
   })
 }
 
+function editCoffee(req, res) {
+  Coffee.findById(req.params.id)
+  .then(coffee => {
+    res.render("coffees/edit", {
+      coffee,
+      title: "Edit Coffee"
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect("/coffees")
+  })
+}
+
 export {
   index,
-  newCoffee as new,
-  create,
-  show
+  newCoffee,
+  createCoffee,
+  show,
+  editCoffee
 }

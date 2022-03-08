@@ -8,12 +8,14 @@ const router = Router()
 router.get('/', coffeesCtrl.index)
 
 // GET - localhost:3000/coffees/new
-router.get('/new', isLoggedIn, coffeesCtrl.new)
+router.get('/new', isLoggedIn, coffeesCtrl.newCoffee)
 // POST - localhost:3000/coffees
-router.post('/', isLoggedIn, coffeesCtrl.create)
+router.post('/', isLoggedIn, coffeesCtrl.createCoffee)
 
 // GET - localhost:3000/coffees/:id
 router.get('/:id', isLoggedIn, coffeesCtrl.show)
+// GET - localhost:3000/coffees/:id/edit
+router.get('/:id/edit', isLoggedIn, coffeesCtrl.editCoffee)
 
 export {
   router

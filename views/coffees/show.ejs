@@ -5,6 +5,13 @@
   <div class="card" style="width: 100rem;">
     <div class="card-body">
       <h1 class="coffee-name"><%= coffee.name %>, <span class="process-format"></span><%= coffee.process %></span></h1>
+
+      <% if (coffee.owner.equals(user?.profile._id)) { %>
+        <form class="edit-btn" action="/coffees/<%= coffee._id %>/edit" method="GET">
+          <button class="btn" type="submit">Edit</button>
+        </form>
+      <% } %>
+
       <h2 class="coffee-origin"><%= `${coffee.region}, ${coffee.country}` %></h2>
       <h4 class="coffee-producer"><%= coffee.producer %> </h4>
 
@@ -16,12 +23,10 @@
       <h5 class="harvest-date" type="date">Harvest: <%= `${new Intl.DateTimeFormat('en-US', { month: 'short'}).format(coffee.harvest)}, ${coffee.harvest.getFullYear()}` %></h5>
       
       <h5 class="roast-date" type="date">Roast date: <%= `${new Intl.DateTimeFormat('en-US').format(coffee.roastDate)}` %></h5>
-
     </div>
   </div>
 
 
-        
 <ul class="list-group list-group-flush">
   <li class="list-group-item">An item</li>
 </ul>

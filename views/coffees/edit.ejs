@@ -4,33 +4,34 @@
 
 <section>
   <h1><%= title %></h1>
-  <form id="new-form" action="/coffees" method="POST">
+  <form id="new-form" action="/coffees/<%= coffee._id %>?_method=PUT" method="POST">
     <p>*All fields are required</p>
     <label for="name-input">Name*</label>
-    <input type="text" name="name" id="name-input" placeholder="required">
+    <input type="text" name="name" id="name-input" value="<%= coffee.name %>">
 
     <label for="producer-input">Producer*</label>
-    <input type="text" name="producer" id="producer-input" placeholder="required, or type unknown">
+    <input type="text" name="producer" id="producer-input" value="<%= coffee.producer %>">
 
     <label for="region-input">Region*</label>
-    <input type="text" name="region" id="region-input" placeholder="required">
+    <input type="text" name="region" id="region-input" value="<%= coffee.region %>">
 
     <label for="country-input">Country*</label>
-    <input type="text" name="country" id="country-input" placeholder="required">
+    <input type="text" name="country" id="country-input" value="<%= coffee.country %>">
 
     <label for="process-select">Process*</label>
     <select name="process" id="process-select">
+      <option value="<%= coffee.process %>"><%= coffee.process %></option>
       <option value="Washed">Washed</option>
       <option value="Natural">Natural</option>
     </select>
 
     <div class="taste-notes-from-roasters">Taste Notes from Roasters<br>
     <label for="taste1-input">Taste 1*</label>
-    <input type="text" name="tasteNote.taste1" id="taste1-input" placeholder="required">
+    <input type="text" name="tasteNote.taste1" id="taste1-input" value="<%= coffee.tasteNote.taste1 %>">
     <label for="taste2-input">Taste 2*</label>
-    <input type="text" name="tasteNote.taste2" id="taste2-input" placeholder="required">
+    <input type="text" name="tasteNote.taste2" id="taste2-input" value="<%= coffee.tasteNote.taste2 %>">
     <label for="taste3-input">Taste 3*</label>
-    <input type="text" name="tasteNote.taste3" id="taste3-input" placeholder="required">
+    <input type="text" name="tasteNote.taste3" id="taste3-input" value="<%= coffee.tasteNote.taste3 %>">
     <!-- <label for="taste4-input">Taste 4</label>
     <input type="text" name="tasteNote.taste4" id="taste4-input">
     <label for="taste5-input">Taste 5</label>
@@ -42,7 +43,7 @@
       type="month"
       name="harvest"
       id="harvest-input"
-      placeholder="required"
+      value="<%= coffee.harvest %>"
     />
 
     <label for="roast-date-input">Roast Date*</label>
@@ -50,16 +51,16 @@
       type="date"
       name="roastDate"
       id="roast-date-input"
-      placeholder="required"
+      value="<%= coffee.roastDate %>"
     />
 
     <label for="varietal-input">Varietal*</label>
-    <input type="text" name="varietal" id="varietal-input " placeholder="required, or type unknown">
+    <input type="text" name="varietal" id="varietal-input " value="<%= coffee.Varietal %>, or type unknown">
 
     <label for="roasters-input">Roasters*</label>
-    <input type="text" name="roasters" id="roasters-input" placeholder="required">
+    <input type="text" name="roasters" id="roasters-input" value="<%= coffee.roasters %>">
 
-    <button type="submit">Add Beans</button>
+    <button type="submit">Edit</button>
   </form>
 </section>
 
