@@ -13,7 +13,7 @@
         <h2 class="coffee-name"><%= coffee.name %></h2>
         <h4 class="coffee-origin"><%= `${coffee.region}, ${coffee.country}` %></h4>
         <h5 class="taste-notes"><%= `${coffee.tasteNote.taste1}, ${coffee.tasteNote.taste2}, ${coffee.tasteNote.taste3}` %></h5>
-        <h6 class="harvest-date" type="date"><%= `${new Intl.DateTimeFormat('en-US', { month: 'short'}).format(coffee.harvestDate)}, ${coffee.harvestDate.getFullYear()}` %> harvest</h6>
+        <h6 class="harvest-date" type="date">Harvest: <%= `${new Intl.DateTimeFormat('en-US', { month: 'short'}).format(coffee.harvest)}, ${coffee.harvest.getFullYear()}` %> </h6>
         <a href="/coffees/<%= coffee._id %>" class="card-link">Learn More</a>
       </div>
     </div>

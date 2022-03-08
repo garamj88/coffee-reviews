@@ -4,21 +4,24 @@
 </head>
 
 <body>
-  <a href="/"><h1 class="website-name">Coffee Snob Society</h1></a>
+  <a href="/" class="website-name"><h1>Coffee Snob Society</h1></a>
 
   <nav>
     <div class="nav-left">    
       <a href="/coffees">Coffee Reviews</a>
       <a href="/profiles">Profiles</a>
     </div>
-    <div class="'nav-right">
+    <span class="nav-right">
+      <div class="login-out">
     <% if (user) { %>
       <a href="/auth/logout">Sign Out</a>
     <% } else { %>
       <a href="/auth/google" class="siwg-link">Sign In</a>
     <% } %>
     </div>
+  </span>
   </nav>
+
 
 <main>
 

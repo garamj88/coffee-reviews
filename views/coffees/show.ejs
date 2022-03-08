@@ -2,12 +2,27 @@
 <%- include('../partials/nav') %>
 
 <section>
-  <div class="coffee-container"
-	<p>From the kitchen of <%= taco.owner.name %>...</p>
-  <h1><%= taco.name %> 🌮</h1>
-  <h2>This taco is <%= taco.tasty ? 'tasty! 😋' : 'not tasty! 😫' %></h2>
+  <div class="card" style="width: 100rem;">
+    <div class="card-body">
+      <h1 class="coffee-name"><%= coffee.name %>, <span class="process-format"></span><%= coffee.process %></span></h1>
+      <h2 class="coffee-origin"><%= `${coffee.region}, ${coffee.country}` %></h2>
+      <h4 class="coffee-producer"><%= coffee.producer %> </h4>
 
-  <ul class="list-group list-group-flush">
+      <h4 class="taste-notes">Notes from <%= coffee.roasters %> <span class="roasters-format">roasters</span>:</h4>
+        <h3 class="tastes"><%= `${coffee.tasteNote.taste1}, ${coffee.tasteNote.taste2}, ${coffee.tasteNote.taste3}` %></h3>
+        <p>Tasted something different? Please share with us in the review!</p>
+
+      <h5 class="coffee-varietal">Varietal: <%= coffee.varietal %></h5>
+      <h5 class="harvest-date" type="date">Harvest: <%= `${new Intl.DateTimeFormat('en-US', { month: 'short'}).format(coffee.harvest)}, ${coffee.harvest.getFullYear()}` %></h5>
+      
+      <h5 class="roast-date" type="date">Roast date: <%= `${new Intl.DateTimeFormat('en-US').format(coffee.roastDate)}` %></h5>
+
+    </div>
+  </div>
+
+
+        
+<ul class="list-group list-group-flush">
   <li class="list-group-item">An item</li>
 </ul>
 </section>

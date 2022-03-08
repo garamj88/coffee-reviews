@@ -13,11 +13,12 @@ const reviewSchema = new Schema({
 
 const coffeeSchema = new Schema({
   name: { type: String, required: true },
-  varietal: String,
-  producer: String,
+  varietal: { type: String, required: true },
+  producer: { type: String, required: true },
   region: { type: String, required: true },
   country: { type: String, required: true },
-  harvestDate: Date,
+  harvest: { type: Date, required: true },
+  roastDate: { type: Date, required: true },
   process: { type: String, enum: ["Washed", "Natural"], required: true },
   tasteNote: {
     taste1: { type: String, required: true },
@@ -26,7 +27,7 @@ const coffeeSchema = new Schema({
     taste4: String,
     taste5: String
   },
-  roaster: { type: String, required: true },
+  roasters: { type: String, required: true },
   owner: { type: Schema.Types.ObjectId, ref: 'Profile' },
   review: [reviewSchema]
 }, {

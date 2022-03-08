@@ -40,7 +40,7 @@ function show(req, res) {
   .then(coffee => {
     res.render('coffees/show', {
       coffee,
-      title: coffee.name
+      title: `${coffee.name}, ${coffee.country}`
     })
   })
   .catch(err => {
