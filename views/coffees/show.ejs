@@ -26,7 +26,7 @@
       <h5 class="roast-date" type="date">Roast date: <%= `${new Intl.DateTimeFormat('en-US').format(coffee.roastDate)}` %></h5>
     </div>
     <div class="card-footer">
-      <p>Created <%= coffee.createdAt %></p>
+      <p>Last update: <%= coffee.createdAt %></p>
     </div>
   </div>
 
@@ -48,9 +48,44 @@
     <button type="submit">Add Review</button>
   </form>
 
+
+  <% if (coffee.reviews.length) { %>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">An item</li>
-  </ul>
+  <% coffee.reviews.forEach(function(review) { %>
+    <li class="list-group-item">
+    Review from an anonymous user
+      <div class="user-notes">
+      <div>Taste notes:</div>
+      <%= `${review.tastes.taste1}, ${review.tastes.taste2}, ${review.tastes.taste3}` %>
+      </div>
+      <div class="user-comment">
+        <div>Comment:</div>
+        <%= review.comment %>
+        </div>
+        <div class="update-date">Last update: <%= review.updatedAt %></div>
+
+    <% if (review.owner.equals(user?.profile._id)) { %>
+      <div id="users-taste-notes"><br>
+        <label for="taste1-input">Taste 1</label>
+        <input type="text" name="tastes.taste1" id="taste1-input" value="<%= coffee.tasteNote.taste1 %>">
+        <label for="taste2-input">Taste 2</label>
+        <input type="text" name="tastes.taste2" id="taste2-input" value="<%= coffee.tasteNote.taste2 %>">
+        <label for="taste3-input">Taste 3</label>
+        <input type="text" name="tastes.taste3" id="taste3-input" value="<%= coffee.tasteNote.taste3 %>">
+      </div>
+  
+      <label for="comment-textarea">Comment:</label>
+      <textarea name="comment" id="comment-textarea"></textarea>
+  
+      <form class="edit-btn" action="/coffees/<%= coffee._id %>/edit" method="GET">
+        <button class="btn" type="submit">Edit</button>
+      </form>
+    <% } %>
+  <% }) %>
+</li>
+  <% } %>
+
+</ul>
 </section>
 
 

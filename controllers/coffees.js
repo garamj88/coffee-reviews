@@ -1,4 +1,5 @@
 import { Coffee } from '../models/coffee.js'
+import { Profile } from "../models/profile.js"
 
 function index(req, res) {
   Coffee.find({})
@@ -10,7 +11,6 @@ function index(req, res) {
     })
   })
   .catch(err => {
-    console.log(err)
     res.redirect("/coffees")
   })
 }
@@ -29,7 +29,6 @@ function createCoffee(req, res) {
     res.redirect('/coffees')
   })
   .catch(err => {
-    console.log(err)
     res.redirect('/coffees')
   })
 }
@@ -44,7 +43,6 @@ function showCoffee(req, res) {
     })
   })
   .catch(err => {
-    console.log(err)
     res.redirect("/coffees")
   })
 }
@@ -58,7 +56,6 @@ function editCoffee(req, res) {
     })
   })
   .catch(err => {
-    console.log(err)
     res.redirect("/coffees")
   })
 }
@@ -91,20 +88,9 @@ function createReview(req, res) {
   })
 }
 
+// function editReview()
 
 
-// function createCoffee(req, res) {
-//   req.body.owner = req.user.profile._id
-//   const coffee = new Coffee(req.body)
-//   Coffee.create(req.body)
-//   .then(coffee => {
-//     res.redirect('/coffees')
-//   })
-//   .catch(err => {
-//     console.log(err)
-//     res.redirect('/coffees')
-//   })
-// }
 
 export {
   index,
@@ -113,5 +99,5 @@ export {
   showCoffee,
   editCoffee,
   updateCoffee,
-  createReview
+  createReview,
 }
