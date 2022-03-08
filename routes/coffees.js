@@ -20,6 +20,8 @@ router.get('/:id/edit', isLoggedIn, coffeesCtrl.editCoffee)
 router.put("/:id", isLoggedIn, coffeesCtrl.updateCoffee)
 // POST - localhost:3000/coffees/:id/reviews
 router.post("/:id/reviews", isLoggedIn, coffeesCtrl.createReview)
+// // GET - localhost:3000/coffees/reviews/:id
+// router.post("/:coffeeId/reviews/:reviewId", isLoggedIn, coffeesCtrl.updateCoffee)
 
 export {
   router

@@ -32,6 +32,7 @@
 
   <form action="/coffees/<%= coffee._id %>/reviews"
   id="add-review-form" method="POST">
+  
     <label for="users-taste-notes">Please change taste notes if you noticed a different nuance:</label>
     <div id="users-taste-notes"><br>
       <label for="taste1-input">Taste 1</label>
@@ -67,17 +68,17 @@
     <% if (review.owner.equals(user?.profile._id)) { %>
       <div id="users-taste-notes"><br>
         <label for="taste1-input">Taste 1</label>
-        <input type="text" name="tastes.taste1" id="taste1-input" value="<%= coffee.tasteNote.taste1 %>">
+        <input type="text" name="tastes.taste1" id="taste1-input" value="<%= review.tastes.taste1 %>">
         <label for="taste2-input">Taste 2</label>
-        <input type="text" name="tastes.taste2" id="taste2-input" value="<%= coffee.tasteNote.taste2 %>">
+        <input type="text" name="tastes.taste2" id="taste2-input" value="<%= review.tastes.taste2 %>">
         <label for="taste3-input">Taste 3</label>
-        <input type="text" name="tastes.taste3" id="taste3-input" value="<%= coffee.tasteNote.taste3 %>">
+        <input type="text" name="tastes.taste3" id="taste3-input" value="<%= review.tastes.taste3 %>">
       </div>
   
       <label for="comment-textarea">Comment:</label>
-      <textarea name="comment" id="comment-textarea"></textarea>
+      <textarea name="comment" id="comment-textarea" value="<%= review.comment %>"></textarea>
   
-      <form class="edit-btn" action="/coffees/<%= coffee._id %>/edit" method="GET">
+      <form class="edit-btn" action="/coffees/<%= coffee._id %>/review/:id" method="POST">
         <button class="btn" type="submit">Edit</button>
       </form>
     <% } %>

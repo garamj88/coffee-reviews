@@ -88,7 +88,7 @@ function createReview(req, res) {
   })
 }
 
-// function editReview()
+// function updateReview()
 
 
 
