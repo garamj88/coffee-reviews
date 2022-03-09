@@ -16,7 +16,7 @@ const reviewSchema = new Schema({
 })
 
 const coffeeSchema = new Schema({
-  name: { type: String, required: true },
+  name: { type: String, required: true, lowercase: true },
   varietal: { type: String, required: true },
   producer: { type: String, required: true },
   region: { type: String, required: true },

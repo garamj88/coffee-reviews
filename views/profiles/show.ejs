@@ -19,7 +19,7 @@
       autocomplete="off"
       method="POST"
     >
-    <label for="gear-input">Gear name</label>
+    <label for="gear-input">Dripper</label>
     <input type="text" name="gear" id="gear-input" placeholder="ie. chemex">
     <label for="ratio-input">Ratio (coffee to water)</label>
     <input type="text" name="ratio" id="ratio-input" placeholder="ie. 1:16">
@@ -31,13 +31,19 @@
   <% if (profile.recipes.length) { %>
     <% profile.recipes.forEach(recipe => { %>
       <h3>
-        Gear Name: <%= recipe.gear %>
+        Dripper: <%= recipe.gear %>
+        Ratio: <%= recipe.ratio %></h3>
         <% if (isSelf) { %>
           <form 
-            action="/profiles/<%= profile._id %>/recipes/<%= recipe.id %>?_method=PUT"
-            method="POST"
-            style="display: inline-block;"
+            action="/profiles/<%= profile._id %>/recipes/<%= recipe.id %>?_method=PATCH" method="POST" style="display: inline-block;"
           >
+
+          <label for="gear-input">Dripper</label>
+          <input type="text" name="gear" id="gear-input" value="<%= recipe.gear %>">
+      
+          <label for="ratio-input">Ratio</label>
+          <input type="text" name="ratio" id="ratio-input" value="<%= recipe.ratio %>">
+
           <button type="submit">Edit</button>
           </form>
         <% } %>
@@ -49,9 +55,7 @@
           >
           <button type="submit">Delete</button>
           </form>
-        <% } %><br>
-        Ratio: <%= recipe.ratio %>
-      </h3>
+        <% } %>
     <% }) %>
   <% } else { %>
     <div id="no-recipes"><h4> No Recipes</h4></div>

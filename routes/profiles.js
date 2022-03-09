@@ -13,6 +13,9 @@ router.get("/:id", isLoggedIn, profilesCtrl.show)
 // POST - localhost:3000/profiles/:id/recipes
 router.post("/:id/recipes", isLoggedIn, profilesCtrl.createRecipe)
 
+// PUT - localhost:3000/profiles/recipes/:id
+router.patch("/:profileId/recipes/:recipeId", isLoggedIn, profilesCtrl.updateRecipe)
+
 // DELETE - localhost:3000/profiles/recipes/:id
 router.delete("/:profileId/recipes/:recipeId", isLoggedIn, profilesCtrl.deleteRecipe)
 
