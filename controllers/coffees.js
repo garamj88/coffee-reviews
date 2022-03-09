@@ -89,6 +89,20 @@ function createReview(req, res) {
 }
 
 
+function deleteReview(req, res) {
+  Coffee.findById(req.params.coffeeId)
+  .then(coffee => {
+    coffee.reviews.remove({ _id: req.params.reviewId })
+    coffee.save()
+    .then(() => {
+      res.redirect(`/coffees/${req.params.coffeeId}`)
+    })
+  })
+  .catch(err => {
+    res.redirect(`/coffees/${req.params.coffeeId}`)
+  })
+}
+
 export {
   index,
   newCoffee,
@@ -97,4 +111,5 @@ export {
   editCoffee,
   updateCoffee,
   createReview,
+  deleteReview
 }

@@ -78,12 +78,19 @@
       <label for="comment-textarea">Comment:</label>
       <textarea name="comment" id="comment-textarea" value="<%= review.comment %>"></textarea>
   
-      <form class="edit-btn" action="/coffees/<%= coffee._id %>/review/:id" method="POST">
+      <form class="edit-btn" action="/coffees/<%= coffee._id %>/reviews/" method="POST">
         <button class="btn" type="submit">Edit</button>
       </form>
+      <form 
+      action="/coffees/<%= coffee._id %>/reviews/<%= review.id %>?_method=DELETE"
+      method="POST"
+      style="display: inline-block;"
+    >
+      <button class="btn" type="submit">Delete</button>
+      </form>
     <% } %>
+  </li>
   <% }) %>
-</li>
   <% } %>
 
 </ul>
