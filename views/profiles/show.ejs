@@ -17,7 +17,7 @@
     <form 
       action="/profiles/<%= profile._id %>/recipes"
       autocomplete="off"
-      method="post"
+      method="POST"
     >
     <label for="gear-input">Gear name</label>
     <input type="text" name="gear" id="gear-input" placeholder="ie. chemex">
@@ -35,11 +35,11 @@
         <% if (isSelf) { %>
           <form 
             action="/profiles/<%= profile._id %>/recipes/<%= recipe.id %>?_method=DELETE"
-            method="post"
+            method="POST"
           >
-          <span><button type="submit">Edit</button>
-          <button type="submit">Delete</button></span>
+          <button type="submit">Delete</button>
         <% } %><br>
+        
         Ratio: <%= recipe.ratio %>
       </h3>
     <% }) %>
