@@ -31,15 +31,16 @@
   <% if (profile.recipes.length) { %>
     <% profile.recipes.forEach(recipe => { %>
       <h3>
-        Gear Name: <%= recipe.gear %><br>
-        Ratio: <%= recipe.ratio %>
+        Gear Name: <%= recipe.gear %>
         <% if (isSelf) { %>
           <form 
             action="/profiles/<%= profile._id %>/recipes/<%= recipe.id %>?_method=DELETE"
             method="post"
           >
-            <button type="submit">Delete</button>
-        <% } %>   
+          <span><button type="submit">Edit</button>
+          <button type="submit">Delete</button></span>
+        <% } %><br>
+        Ratio: <%= recipe.ratio %>
       </h3>
     <% }) %>
   <% } else { %>
