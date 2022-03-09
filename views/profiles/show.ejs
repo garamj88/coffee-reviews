@@ -1,0 +1,50 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+  <% if (profile.avatar) { %>
+    <div>
+      <img src="<%= profile.avatar %> " alt="<%= profile.name %> avatar" class="profile-avatar">
+      <h1><%= profile.name %></h1>
+    </div>
+  <% } %>
+
+  <h2>
+    Favorite Recipes
+  </h2>
+
+  <% if (isSelf) { %>
+    <h2>Add your favorite recipe</h2> 
+    <form 
+      action="/profiles/<%= profile._id %>/recipes"
+      autocomplete="off"
+      method="post"
+    >
+    <label for="gear-input">Gear name</label>
+    <input type="text" name="gear" id="gear-input" placeholder="ie. chemex">
+    <label for="ratio-input">Ratio (coffee to water)</label>
+    <input type="text" name="ratio" id="ratio-input" placeholder="ie. 1:16">
+
+      <button type="submt">Submit</button>
+    </form>
+  <% } %>
+  
+  <% if (profile.recipes.length) { %>
+    <% profile.recipes.forEach(recipe => { %>
+      <h3>
+        Gear Name: <%= recipe.gear %><br>
+        Ratio: <%= recipe.ratio %>
+        <% if (isSelf) { %>
+          <form 
+            action="/profiles/<%= profile._id %>/recipes/<%= recipe.id %>?_method=DELETE"
+            method="post"
+          >
+            <button type="submit">Delete</button>
+        <% } %>   
+      </h3>
+    <% }) %>
+  <% } else { %>
+    <div id="no-recipes"><h4> No Recipes</h4></div>
+  <% } %> 
+
+
+<%- include('../partials/footer') %>
