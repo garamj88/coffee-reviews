@@ -88,9 +88,6 @@ function createReview(req, res) {
   })
 }
 
-// function updateReview()
-
-
 
 export {
   index,

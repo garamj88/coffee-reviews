@@ -52,21 +52,14 @@ function updateRecipe(req, res) {
       const index = profile.recipes.findIndex(r => parseInt(r._id) === parseInt(req.params.recipeId))
       profile.recipes[index].gear = req.body.gear
       profile.recipes[index].ratio = req.body.ratio
-        profile.save()
-          .then(() => {
-            res.redirect(`/profiles/${req.user.profile._id}`)
-          })
+      profile.save()
+        .then(() => {
+          res.redirect(`/profiles/${req.user.profile._id}`)
+        })
       })
       .catch(err => {
         res.redirect(`/profiles/${req.user.profile._id}`)
       })
-      // recipe.updateOne(req.body, { new: true })
-      // .then(() => {
-      // res.redirect(`/profiles/${req.user.profile._id}`)
-      // })
-      // .catch(err => {
-      // res.redirect(`/profiles/${req.user.profile._id}`)
-      // })
   }
 
 function deleteRecipe(req, res) {
