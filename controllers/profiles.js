@@ -45,9 +45,24 @@ function createRecipe(req, res) {
   })
 }
 
+function deleteRecipe(req, res) { 
+  Profile.findById(req.params.profileId)
+  .then(profile => {
+    profile.recipes.remove({_id: req.params.recipeId})
+    profile.save()
+    .then(() => {
+      res.redirect(`/profiles/${req.user.profile._id}`)
+    })
+  })
+  .catch(err => {
+    res.redirect(`/profiles/${req.user.profile._id}`)
+  })
+}
+
 
 export {
   index,
   show,
-  createRecipe
+  createRecipe,
+  deleteRecipe,
 }

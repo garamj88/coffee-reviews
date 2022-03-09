@@ -34,12 +34,22 @@
         Gear Name: <%= recipe.gear %>
         <% if (isSelf) { %>
           <form 
+            action="/profiles/<%= profile._id %>/recipes/<%= recipe.id %>?_method=PUT"
+            method="POST"
+            style="display: inline-block;"
+          >
+          <button type="submit">Edit</button>
+          </form>
+        <% } %>
+        <% if (isSelf) { %>
+          <form 
             action="/profiles/<%= profile._id %>/recipes/<%= recipe.id %>?_method=DELETE"
             method="POST"
+            style="display: inline-block;"
           >
           <button type="submit">Delete</button>
+          </form>
         <% } %><br>
-        
         Ratio: <%= recipe.ratio %>
       </h3>
     <% }) %>
