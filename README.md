@@ -5,7 +5,7 @@ This web site welcomes people who care about sustainably produced and distribute
 * details of each coffee beans and reviews
 * members (other users) with their go-to coffee brewing recipes
 
-### [Visit Coffee Snob Society](https://git.heroku.com/coffee-reviews-gj.git)
+## [Visit Coffee Snob Society](https://git.heroku.com/coffee-reviews-gj.git)
 
 ## Technology Used
 * MongoDB
