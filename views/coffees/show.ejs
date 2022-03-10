@@ -6,7 +6,7 @@
     <div class="card-header">
       <h1 class="coffee-name"><%= coffee.name %>, <span class="process-format"></span><%= coffee.process %></span></h1>
 
-      <% if (coffee.owner.equals(user?.profile._id)) { %>
+  <% if (coffee.owner.equals(user?.profile._id)) { %>
         <form class="edit-btn" action="/coffees/<%= coffee._id %>/edit" method="GET">
           <button class="btn" type="submit">Edit</button>
         </form>
@@ -36,11 +36,11 @@
     <label for="users-taste-notes">Please change taste notes if you noticed a different nuance:</label>
     <div id="users-taste-notes"><br>
       <label for="taste1-input">Taste 1</label>
-      <input type="text" name="tastes.taste1" id="taste1-input" value="<%= coffee.tasteNote.taste1 %>">
+      <input type="text" name="taste1" id="taste1-input" value="<%= coffee.tasteNote.taste1 %>">
       <label for="taste2-input">Taste 2</label>
-      <input type="text" name="tastes.taste2" id="taste2-input" value="<%= coffee.tasteNote.taste2 %>">
+      <input type="text" name="taste2" id="taste2-input" value="<%= coffee.tasteNote.taste2 %>">
       <label for="taste3-input">Taste 3</label>
-      <input type="text" name="tastes.taste3" id="taste3-input" value="<%= coffee.tasteNote.taste3 %>">
+      <input type="text" name="taste3" id="taste3-input" value="<%= coffee.tasteNote.taste3 %>">
     </div>
 
     <label for="comment-textarea">Comment:</label>
@@ -49,50 +49,48 @@
     <button type="submit">Submit</button>
   </form>
 
-
-  <% if (coffee.reviews.length) { %>
   <ul class="list-group list-group-flush">
-  <% coffee.reviews.forEach(function(review) { %>
+  <% if (coffee.reviews.length) { %>
+  <% coffee.reviews.forEach((review) => { %>
     <li class="list-group-item">
     Review from an anonymous user
       <div class="user-notes">
       <div>Taste notes:</div>
-      <%= `${review.tastes.taste1}, ${review.tastes.taste2}, ${review.tastes.taste3}` %>
+      <%= review.tastes.taste1 %>, <%= review.tastes.taste2 %>, <%= review.tastes.taste3 %>
       </div>
       <div class="user-comment">
         <div>Comment:</div>
         <%= review.comment %>
         </div>
         <div class="update-date">Last update: <%= review.updatedAt %></div>
-
+    </li>
     <% if (review.owner.equals(user?.profile._id)) { %>
+      <form action="/coffees/<%= coffee._id %>/reviews/<%= review.id %>?_method=PATCH" method="POST" style="display: inline-block;">
+      
       <div id="users-taste-notes"><br>
         <label for="taste1-input">Taste 1</label>
-        <input type="text" name="tastes.taste1" id="taste1-input" value="<%= review.tastes.taste1 %>">
+        <input type="text" name="taste1" id="taste1-input" value="<%= review.tastes.taste1 %>">
         <label for="taste2-input">Taste 2</label>
-        <input type="text" name="tastes.taste2" id="taste2-input" value="<%= review.tastes.taste2 %>">
+        <input type="text" name="taste2" id="taste2-input" value="<%= review.tastes.taste2 %>">
         <label for="taste3-input">Taste 3</label>
-        <input type="text" name="tastes.taste3" id="taste3-input" value="<%= review.tastes.taste3 %>">
+        <input type="text" name="taste3" id="taste3-input" value="<%= review.tastes.taste3 %>">
       </div>
   
       <label for="comment-textarea">Comment:</label>
       <textarea name="comment" id="comment-textarea" value="<%= review.comment %>"></textarea>
   
-      <form class="edit-btn" action="/coffees/<%= coffee._id %>/reviews/" method="POST">
-        <button class="btn" type="submit">Edit</button>
+      <button class="btn" type="submit">Edit</button>
       </form>
+    <% } %> 
+      <% if (review.owner.equals(user?.profile._id)) { %>
       <form 
-      action="/coffees/<%= coffee._id %>/reviews/<%= review.id %>?_method=DELETE"
-      method="POST"
-      style="display: inline-block;"
-    >
+      action="/coffees/<%= coffee._id %>/reviews/<%= review.id %>?_method=DELETE" method="POST"
+      style="display: inline-block;">
       <button class="btn" type="submit">Delete</button>
       </form>
     <% } %>
-  </li>
   <% }) %>
   <% } %>
-
 </ul>
 </section>
 
