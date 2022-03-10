@@ -23,17 +23,6 @@ body {
   margin: 0;
 }
 
-nav {
-  background-color: white;
-  font-size: 1.6rem;
-  display: flex;
-  justify-content: center;
-}
-
-.nav-right {
-  float: right;
-}
-
 main {
   display: flex;
   align-items: left;
@@ -41,9 +30,7 @@ main {
   flex-direction: column;
 }
 
-.website-name {
-  font-size: 3.6rem;
-  text-align: center;
-  color: black;
-  text-decoration: none;
+
+nav {
+  font-size: 1.9rem;
 }

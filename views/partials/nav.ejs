@@ -4,52 +4,39 @@
 </head>
 
 <body>
-  <a href="/" class="website-name"><h1>Coffee Snob Society</h1></a>
-
-  <nav>
-    <div class="nav-left">    
-      <a href="/coffees">Coffee Reviews</a>
-      <a href="/profiles">Profiles</a>
-    </div>
-    <span class="nav-right">
-      <div class="login-out">
-    <% if (user) { %>
-      <a href="/auth/logout">Sign Out</a>
-    <% } else { %>
-      <a href="/auth/google" class="siwg-link">Sign In</a>
-    <% } %>
-    </div>
-  </span>
-  </nav>
-
-
-<main>
-
-<!-- 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="">Navbar</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="/profiles">Members
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
+            <a class="nav-link dropdown-toggle" href="/coffees" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Coffee Reviews
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="/coffees"><h3>Coffee Reviews</h3></a></li>
+              <li><a class="dropdown-item" href="/coffees/new"><h3>Add New Coffee</3></a></li>
             </ul>
           </li>
+          <a class="navbar-brand" href="/" id="website-name"><h1>Coffee Snob Society</h1></a>
         </ul>
+        <form class="d-flex">
+          <button class="btn btn-outline-primary" type="submit">
+            <% if (user) { %>
+              <a href="/auth/logout">Sign Out</a>
+            <% } else { %>
+              <a href="/auth/google" class="siwg-link">Sign In</a>
+            <% } %>
+          </button>
+        </form>
       </div>
     </div>
-  </nav> -->
+  </nav>
+
+<main>
+
+

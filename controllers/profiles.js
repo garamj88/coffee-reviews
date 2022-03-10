@@ -76,12 +76,13 @@ function deleteRecipe(req, res) {
     })
 }
 
+
 export {
   index,
   show,
   createRecipe,
   updateRecipe,
-  deleteRecipe,
+  deleteRecipe
 }
 
 
