@@ -78,14 +78,29 @@ function updateCoffee(req, res) {
     })
 }
 
+// function createReview(req, res) {
+//   req.body.owner = req.user.profile._id
+//   Coffee.findById(req.params.coffeeId, function (err, coffee) {
+//     coffee.reviews.push(req.body)
+//     coffee.save(function (err) {
+//       res.redirect(`/coffees/${req.params.coffeeId}`)
+//     })
+//   })
+// }
+
 function createReview(req, res) {
   req.body.owner = req.user.profile._id
-  Coffee.findById(req.params.id, function (err, coffee) {
+  Coffee.findById(req.params.coffeeId)
+  .then(coffee => {
     coffee.reviews.push(req.body)
-    coffee.save(function (err) {
-      res.redirect(`/coffees/${coffee._id}`)
+    coffee.save()
+    .then(() => {
+      res.redirect(`/coffees/${req.params.coffeeId}`)
     })
-  })
+    .catch(err => {
+      res.redirect(`/coffees/${req.params.coffeeId}`)
+    })
+})
 }
 
 function updateReview(req, res) {
