@@ -92,18 +92,14 @@ function updateReview(req, res) {
   Coffee.findById(req.params.coffeeId)
     .then(coffee => {
       const index = coffee.reviews.findIndex(r => parseInt(r._id) === parseInt(req.params.reviewId))
-      console.log(req.body)
-
-      coffee.reviews[index].tastes.taste1 = req.body.
-      coffee.reviews[index].tastes.taste2 = req.body.tastes.taste2
-      coffee.reviews[index].tastes.taste3 = req.body.tastes.taste3
+      coffee.reviews[index].tastes.taste1 = req.body.taste1
+      coffee.reviews[index].tastes.taste2 = req.body.taste2
+      coffee.reviews[index].tastes.taste3 = req.body.taste3
       coffee.reviews[index].comment = req.body.comment
-      // coffee.save()
- 
-      // console.log(coffee.reviews[index])
-      //   .then(() => {
-      //     res.redirect(`/coffees/${req.params.coffeeId}`)
-      //   })
+      coffee.save()
+      .then(() => {
+        res.redirect(`/coffees/${req.params.coffeeId}`)
+      })
     })
     .catch(err => {
       res.redirect(`/coffees/${req.params.coffeeId}`)

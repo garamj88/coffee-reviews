@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 
 // reviewSchema
 const reviewSchema = new Schema({
-  comment: String,
+  comment: { type: String, required: true },
   tastes: {
     taste1: { type: String, required: true },
     taste2: { type: String, required: true },
