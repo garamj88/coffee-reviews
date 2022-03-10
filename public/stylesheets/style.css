@@ -30,7 +30,17 @@ main {
   flex-direction: column;
 }
 
+nav, li {
+  font-size: 1.8rem;
+}
 
-nav {
-  font-size: 1.9rem;
+#members {
+  padding-left: .5em;
+}
+
+.navbar-brand {
+  font-size: 2rem;
+}
+#loginout-btn {
+  all: unset;
 }
