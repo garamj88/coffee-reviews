@@ -52,7 +52,7 @@ function editCoffee(req, res) {
     .then(coffee => {
       res.render("coffees/edit", {
         coffee,
-        title: "Edit Coffee"
+        title: "Edit Coffee Beans"
       })
     })
     .catch(err => {
@@ -77,16 +77,6 @@ function updateCoffee(req, res) {
       res.redirect("/coffees")
     })
 }
-
-// function createReview(req, res) {
-//   req.body.owner = req.user.profile._id
-//   Coffee.findById(req.params.coffeeId, function (err, coffee) {
-//     coffee.reviews.push(req.body)
-//     coffee.save(function (err) {
-//       res.redirect(`/coffees/${req.params.coffeeId}`)
-//     })
-//   })
-// }
 
 function createReview(req, res) {
   req.body.owner = req.user.profile._id

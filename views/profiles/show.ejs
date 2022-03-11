@@ -4,62 +4,58 @@
   <% if (profile.avatar) { %>
     <div class="profile">
       <img src="<%= profile.avatar %> " alt="<%= profile.name %> avatar" class="profile-avatar">
-      <h1><%= profile.name %></h1>
-    </div>
+      <h2><%= profile.name %></h2>
+    </div><br><br>
   <% } %>
 
-  <h2>
-    Favorite Recipes
-  </h2>
+  <h2 class="fav" style="text-decoration: underline;">
+    Favorite Brewing Recipes
+  </h2><br>
 
-  <% if (isSelf) { %>
-    <h2>Add your favorite recipe</h2> 
-    <form 
-      action="/profiles/<%= profile._id %>/recipes"
-      autocomplete="off"
-      method="POST"
-    >
-    <label for="gear-input">Dripper</label>
-    <input type="text" name="gear" id="gear-input" placeholder="ie. chemex">
-    <label for="ratio-input">Ratio (coffee to water)</label>
-    <input type="text" name="ratio" id="ratio-input" placeholder="ie. 1:16">
 
-      <button type="submt">Submit</button>
-    </form>
-  <% } %>
-  
   <% if (profile.recipes.length) { %>
     <% profile.recipes.forEach(recipe => { %>
       <h3>
-        Dripper: <%= recipe.gear %>
-        Ratio: <%= recipe.ratio %></h3>
+        Dripper: <%= recipe.gear %>, Ratio: <%= recipe.ratio %></h3>
         <% if (isSelf) { %>
           <form 
             action="/profiles/<%= profile._id %>/recipes/<%= recipe.id %>?_method=PATCH" method="POST" style="display: inline-block;"
           >
 
-          <label for="gear-input">Dripper</label>
+          <h4><label for="gear-input">Dripper</label>
           <input type="text" name="gear" id="gear-input" value="<%= recipe.gear %>">
       
           <label for="ratio-input">Ratio</label>
           <input type="text" name="ratio" id="ratio-input" value="<%= recipe.ratio %>">
-
-          <button type="submit">Edit</button>
+          <button type="submit" class="btn btn-outline-secondary">Edit</button>
           </form>
-        <% } %>
-        <% if (isSelf) { %>
           <form 
-            action="/profiles/<%= profile._id %>/recipes/<%= recipe.id %>?_method=DELETE"
-            method="POST"
-            style="display: inline-block;"
-          >
-          <button type="submit">Delete</button>
-          </form>
+          action="/profiles/<%= profile._id %>/recipes/<%= recipe.id %>?_method=DELETE"
+          method="POST"
+          style="display: inline-block;"
+        >
+        <button type="submit" class="btn btn-outline-secondary">Delete</button></h4>
+        </form>
         <% } %>
     <% }) %>
   <% } else { %>
-    <div id="no-recipes"><h4> No Recipes</h4></div>
+    <div id="no-recipes"><h4>No Recipes</h4></div>
   <% } %> 
 
+  <% if (isSelf) { %>
+    <br><h3>Add your favorite recipe</h3> 
+    <form 
+      action="/profiles/<%= profile._id %>/recipes"
+      autocomplete="off"
+      method="POST"
+    >
+    <h4><label for="gear-input">Dripper</label>
+    <input type="text" name="gear" id="gear-input" placeholder="example: chemex">
+    <label for="ratio-input" style="padding-left: 1em;">Ratio (coffee to water)</label>
+    <input type="text" name="ratio" id="ratio-input" placeholder="example. 1:16">
 
+    <button class="btn btn-outline-secondary" type="submt">Submit</button></h4>
+    </form>
+  <% } %>
+  
 <%- include('../partials/footer') %>

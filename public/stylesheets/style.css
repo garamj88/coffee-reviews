@@ -23,13 +23,6 @@ body {
   margin: 0;
 }
 
-main {
-  display: flex;
-  align-items: left;
-  justify-content: center;
-  flex-direction: column;
-}
-
 nav, li {
   font-size: 1.8rem;
 }
@@ -49,11 +42,6 @@ nav, li {
 
 .users-name {
   padding-right: .5em;
-}
-
-#coffee-wheel {
-  margin: 0 auto;
-height: 51.5vmax;
 }
 
 #loginout-btn {
@@ -77,4 +65,19 @@ height: 51.5vmax;
 
 #navbar-items:active {
   color: black;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  margin: 0;
+  padding: 5em;
+}
+
+
+#coffee-wheel {
+  margin: 0 auto;
+  height: 81vh
 }

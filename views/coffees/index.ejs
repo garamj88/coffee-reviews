@@ -1,28 +1,52 @@
 <%- include('../partials/html-head') %>
-<%- include('../partials/nav') %>
+  <%- include('../partials/nav') %>
 
-<section>
-  <h1><%= title %> </h1>
-<h3>We have reviewed <%= coffees.length %> coffees as of <%= time %></h3>
-  <h4>Can't find the coffee beans you want to review?<br><a href="/coffees/new">Add new coffee beans</a> and share your experience with us!</h4>
+    <section>
+      <h1>
+        <%= title %>
+      </h1>
+      <h3>We have reviewed <%= coffees.length %> coffees as of <%= time %>
+      </h3>
+      <h4>Can't find the coffee beans you want to review?<br><a href="/coffees/new">Add new coffee beans</a> and share
+        your experience with us!</h4>
 
-  <!-- change to card container -->
-    <% coffees.forEach(coffee=> { %>
-      <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h2 class="coffee-name"><%= coffee.name %></h2>
-        <h4 class="coffee-origin"><%= `${coffee.region}, ${coffee.country}` %></h4>
-        <h5 class="taste-notes"><%= `${coffee.tasteNote.taste1}, ${coffee.tasteNote.taste2}, ${coffee.tasteNote.taste3}` %></h5>
-        <h6 class="harvest-date" type="date">Harvest: <%= `${new Intl.DateTimeFormat('en-US', { month: 'short'}).format(coffee.harvest)}, ${coffee.harvest.getFullYear()}` %> </h6>
-        <% if (user) { %>
-        <a href="/coffees/<%= coffee._id %>" class="card-link">Learn More</a>
-      <% } else { %>
-        <a href="/auth/google" class="card-link">Learn More</a>
-        <% } %>
+      <div class="container py-5 px-3">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+
+          <% coffees.forEach(coffee=> { %>
+            <div class="col">
+              <div class="card h-100">
+
+                <div class="card-img-top" style="padding: 2em;">
+                  <h3 class="card-title">
+                    <%= coffee.name %>
+                  </h3>
+                  <h4>
+                    <%= `${coffee.region}, ${coffee.country}` %>
+                  </h4>
+                  <h4>
+                    <%= `${coffee.tasteNote.taste1}, ${coffee.tasteNote.taste2}, ${coffee.tasteNote.taste3}` %>
+                  </h4>
+                  <h5>Harvest: <%= coffee.harvest %>
+                  </h5>
+                </div>
+                <div class="card-body">
+                  <p class="card-title fs-3 text-dark" style="padding-left: .5em;">
+                    <% if (user) { %>
+                      <a href="/coffees/<%= coffee._id %>" class="btn btn-outline-secondary">Learn More</a>
+                      <% } else { %>
+                        <a href="/auth/google" class="btn btn-outline-secondary">Learn More</a>
+                        <% } %>
+                  </p>
+                </div>
+              </div>
+              </a>
+            </div>
+            <% }) %>
+        </div>
       </div>
-    </div>
-  <% }) %>
 
-</section>
 
-<%- include('../partials/footer') %>
+    </section>
+
+    <%- include('../partials/footer') %>

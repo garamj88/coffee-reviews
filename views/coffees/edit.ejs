@@ -2,27 +2,21 @@
 <%- include('../partials/nav') %>
 
 <section>
-  <h1><%= title %></h1>
+  <h1><%= title %></h1><br>
+
   <form id="new-form" action="/coffees/<%= coffee._id %>?_method=PUT" method="POST">
-    <p>*All fields are required</p>
-    <label for="name-input">Name*</label>
+    <h4 style="color: rgb(255, 0, 0);">*All fields are required</h4><br>
+    <h3><label for="name-input">Name*</label>
     <input type="text" name="name" id="name-input" value="<%= coffee.name %>">
 
     <label for="producer-input">Producer*</label>
-    <input type="text" name="producer" id="producer-input" value="<%= coffee.producer %>">
+    <input type="text" name="producer" id="producer-input" value="<%= coffee.producer %>"><br><br>
 
     <label for="region-input">Region*</label>
     <input type="text" name="region" id="region-input" value="<%= coffee.region %>">
 
     <label for="country-input">Country*</label>
-    <input type="text" name="country" id="country-input" value="<%= coffee.country %>">
-
-    <label for="process-select">Process*</label>
-    <select name="process" id="process-select">
-      <option value="<%= coffee.process %>"><%= coffee.process %></option>
-      <option value="Washed">Washed</option>
-      <option value="Natural">Natural</option>
-    </select>
+    <input type="text" name="country" id="country-input" value="<%= coffee.country %>"><br><br>
 
     <div class="taste-notes-from-roasters">Taste Notes from Roasters<br>
     <label for="taste1-input">Taste 1*</label>
@@ -31,19 +25,30 @@
     <input type="text" name="tasteNote.taste2" id="taste2-input" value="<%= coffee.tasteNote.taste2 %>">
     <label for="taste3-input">Taste 3*</label>
     <input type="text" name="tasteNote.taste3" id="taste3-input" value="<%= coffee.tasteNote.taste3 %>">
-    <!-- <label for="taste4-input">Taste 4</label>
-    <input type="text" name="tasteNote.taste4" id="taste4-input">
-    <label for="taste5-input">Taste 5</label>
-    <input type="text" name="tasteNote.taste5" id="taste5-input"> -->
-  </div>
+    </div><br>
 
-    <label for="harvest-input">Harvest Date*</label>
+  <label for="varietal-input">Varietal*</label>
+  <input type="text" name="varietal" id="varietal-input " value="<%= coffee.varietal %>">
+
+    <label for="harvest-input">Harvest*</label>
+    <!-- <select name="harvest.month" id="month">
+    </select> -->
     <input
-      type="month"
+      type="text"
       name="harvest"
       id="harvest-input"
       value="<%= coffee.harvest %>"
     />
+
+    <label for="process-select">Process*</label>
+    <select name="process" id="process-select">
+      <option value="<%= coffee.process %>"><%= coffee.process %></option>
+      <option value="Washed">Washed</option>
+      <option value="Natural">Natural</option>
+    </select><br><br>
+
+    <label for="roasters-input">Roasters*</label>
+    <input type="text" name="roasters" id="roasters-input" value="<%= coffee.roasters %>">
 
     <label for="roast-date-input">Roast Date*</label>
     <input
@@ -51,15 +56,9 @@
       name="roastDate"
       id="roast-date-input"
       value="<%= coffee.roastDate %>"
-    />
+    /></h3><br><br>
 
-    <label for="varietal-input">Varietal*</label>
-    <input type="text" name="varietal" id="varietal-input " value="<%= coffee.Varietal %>">
-
-    <label for="roasters-input">Roasters*</label>
-    <input type="text" name="roasters" id="roasters-input" value="<%= coffee.roasters %>">
-
-    <button type="submit">Submit Change</button>
+    <button class="btn btn-outline-secondary" type="submit"><h3>Save Change</h3></button>
   </form>
 </section>
 

@@ -16,12 +16,16 @@ const reviewSchema = new Schema({
 })
 
 const coffeeSchema = new Schema({
-  name: { type: String, required: true, lowercase: true },
+  name: { type: String, required: true },
   varietal: { type: String, required: true },
   producer: { type: String, required: true },
   region: { type: String, required: true },
   country: { type: String, required: true },
-  harvest: { type: Date, required: true },
+  harvest: {
+    // month: { type: String, enum: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], required: true },
+    // year: { type: Number, min: 2020, max: 9999, required: true }
+    type: String, required: true
+  },
   roastDate: { type: Date, required: true },
   process: { type: String, enum: ["Washed", "Natural"], required: true },
   tasteNote: {

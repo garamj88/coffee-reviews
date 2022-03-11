@@ -2,97 +2,109 @@
 <%- include('../partials/nav') %>
 
 <section>
-  <div class="card" style="width: 100rem;">
-    <div class="card-header">
-      <h1 class="coffee-name"><%= coffee.name %>, <span class="process-format"></span><%= coffee.process %></span></h1>
+  <div class="card">
+    <div class="card-body">
+    <h1 class="coffee-name">
+      <%= coffee.name %>, <span class="process-format"></span>
+        <%= coffee.process %></span>
+          <% if (coffee.owner.equals(user?.profile._id)) { %>
+            <form class="edit-btn" action="/coffees/<%= coffee._id %>/edit" method="GET" style="display: inline-block;">
+              <button type="submit" class="btn btn-outline-secondary">Edit</button>
+            </form>
+            <% } %>
+    </h1>
+    <h2 class="coffee-origin">
+      <%= `${coffee.region}, ${coffee.country}` %>
+    </h2>
+    <h5 class="taste-notes">Taste notes from the roasters:</h5>
+    <h3 class="tastes-all">
+      <%= `${coffee.tasteNote.taste1}, ${coffee.tasteNote.taste2}, ${coffee.tasteNote.taste3}` %>
+    </h3>
+    <p>Tasted something different? Please share with us in the review!</p>
+    <h3 class="coffee-producer">Producer: <%= coffee.producer %>
+    </h3>
+    <h4 class="coffee-producer">Roasters: <%= coffee.roasters %>
+    </h4>
+    <h4 class="coffee-varietal">Varietal: <%= coffee.varietal %>
+    </h4>
+    <h4 class="harvest-date" type="date">Harvest: <%= coffee.harvest %>
+    </h4>
 
-  <% if (coffee.owner.equals(user?.profile._id)) { %>
-        <form class="edit-btn" action="/coffees/<%= coffee._id %>/edit" method="GET">
-          <button class="btn" type="submit">Edit</button>
-        </form>
-      <% } %>
-    </div>
-      <div class="card-body">
-      <h2 class="coffee-origin"><%= `${coffee.region}, ${coffee.country}` %></h2>
-      <h4 class="coffee-producer"><%= coffee.producer %> </h4>
+    <h4 class="roast-date" type="date">Roast date: <%= `${new Intl.DateTimeFormat('en-US').format(coffee.roastDate)}` %>
+    </h4>
+    <p id="update-date">Last update: <%= coffee.createdAt %>
+    </p>
+  </div>
+  </div>
 
-      <h4 class="taste-notes">Notes from <%= coffee.roasters %> <span class="roasters-format">roasters</span>:</h4>
-        <h3 class="tastes-all"><%= `${coffee.tasteNote.taste1}, ${coffee.tasteNote.taste2}, ${coffee.tasteNote.taste3}` %></h3>
-        <p>Tasted something different? Please share with us in the review!</p>
+  <div class="card card-body">
+      <a class="btn btn-outline-secondary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1" id="review-btn"><h4>Write a Review</h4></a>
+      <div class="collapse multi-collapse" id="multiCollapseExample1">
+      <form action="/coffees/<%= coffee._id %>/reviews" id="add-review-form" method="POST">
+        <h5>
+        <label for="users-taste-notes"></label>
+        <div id="users-taste-notes"><br>
+          <p id="notes">Please change taste notes if you noticed a different nuance:</p>
+          <label for="taste1-input">Taste 1</label>
+          <input type="text" name="tastes.taste1" id="taste1-input" value="<%= coffee.tasteNote.taste1 %>">
+          <label for="taste2-input">Taste 2</label>
+          <input type="text" name="tastes.taste2" id="taste2-input" value="<%= coffee.tasteNote.taste2 %>">
+          <label for="taste3-input">Taste 3</label>
+          <input type="text" name="tastes.taste3" id="taste3-input" value="<%= coffee.tasteNote.taste3 %>">
+        </div><br>
+        <label for="comment-textarea">Comment:</label>
+        <textarea name="comment" id="comment-textarea" placeholder="Required"></textarea>
 
-      <h5 class="coffee-varietal">Varietal: <%= coffee.varietal %></h5>
-      <h5 class="harvest-date" type="date">Harvest: <%= `${new Intl.DateTimeFormat('en-US', { month: 'short'}).format(coffee.harvest)}, ${coffee.harvest.getFullYear()}` %></h5>
-      
-      <h5 class="roast-date" type="date">Roast date: <%= `${new Intl.DateTimeFormat('en-US').format(coffee.roastDate)}` %></h5>
-    </div>
-    <div class="card-footer">
-      <p>Last update: <%= coffee.createdAt %></p>
+        <button class="btn btn-outline-secondary" type="submit">Submit</button></h5>
+      </form>
     </div>
   </div>
 
-  <form action="/coffees/<%= coffee._id %>/reviews"
-  id="add-review-form" method="POST">
-  
-    <label for="users-taste-notes">Please change taste notes if you noticed a different nuance:</label>
-    <div id="users-taste-notes"><br>
-      <label for="taste1-input">Taste 1</label>
-      <input type="text" name="tastes.taste1" id="taste1-input" value="<%= coffee.tasteNote.taste1 %>">
-      <label for="taste2-input">Taste 2</label>
-      <input type="text" name="tastes.taste2" id="taste2-input" value="<%= coffee.tasteNote.taste2 %>">
-      <label for="taste3-input">Taste 3</label>
-      <input type="text" name="tastes.taste3" id="taste3-input" value="<%= coffee.tasteNote.taste3 %>">
-    </div>
 
-    <label for="comment-textarea">Comment:</label>
-    <textarea name="comment" id="comment-textarea" placeholder="Required"></textarea>
-
-    <button type="submit">Submit</button>
-  </form>
-
-  <ul class="list-group list-group-flush">
   <% if (coffee.reviews.length) { %>
-  <% coffee.reviews.forEach((review) => { %>
-    <li class="list-group-item">
-    Review from an anonymous user
-      <div class="user-notes">
-      <div>Taste notes:</div>
-      <%= review.tastes.taste1 %>, <%= review.tastes.taste2 %>, <%= review.tastes.taste3 %>
-      </div>
-      <div class="user-comment">
-        <div>Comment:</div>
-        <%= review.comment %>
+      <% coffee.reviews.forEach((review)=> { %>
+        <div class="card card-body">
+        <div class="card-body"> 
+        <div class="user-notes">
+          <h5 id="sub-heading">Taste notes from the reviewer: <%= review.tastes.taste1 %>, <%= review.tastes.taste2 %>, <%= review.tastes.taste3 %>
+          </h5>
         </div>
-        <div class="update-date">Last update: <%= review.updatedAt %></div>
-    </li>
+        <div class="user-comment">
+          <h5 id="sub-heading">Comment:<br>
+            <%= review.comment %>
+          </h5>
+        </div>
+        <p id="update-date">Last update: <%= review.updatedAt %>
+        </p>
     <% if (review.owner.equals(user?.profile._id)) { %>
-      <form action="/coffees/<%= coffee._id %>/reviews/<%= review.id %>?_method=PATCH" method="POST" style="display: inline-block;">
-      
-      <div id="users-taste-notes"><br>
-        <label for="taste1-input">Taste 1</label>
-        <input type="text" name="taste1" id="taste1-input" value="<%= review.tastes.taste1 %>">
-        <label for="taste2-input">Taste 2</label>
-        <input type="text" name="taste2" id="taste2-input" value="<%= review.tastes.taste2 %>">
-        <label for="taste3-input">Taste 3</label>
-        <input type="text" name="taste3" id="taste3-input" value="<%= review.tastes.taste3 %>">
+      <a class="btn btn-outline-secondary" data-bs-toggle="collapse" href="#multiCollapseExample2" role="button" aria-expanded="false" aria-controls="multiCollapseExample1" id="review-btn">Edit / Delete this Review</a>
+      <div class="collapse multi-collapse" id="multiCollapseExample2">
+        <div class="card card-body">
+          <form action="/coffees/<%= coffee._id %>/reviews/<%= review.id %>?_method=PATCH" method="POST"
+            style="display: inline-block;">
+            <div id="users-taste-notes"><br>
+              <label for="taste1-input">Taste 1</label>
+              <input type="text" name="taste1" id="taste1-input" value="<%= review.tastes.taste1 %>">
+              <label for="taste2-input">Taste 2</label>
+              <input type="text" name="taste2" id="taste2-input" value="<%= review.tastes.taste2 %>">
+              <label for="taste3-input">Taste 3</label>
+              <input type="text" name="taste3" id="taste3-input" value="<%= review.tastes.taste3 %>">
+            </div><br>
+            <label for="comment-text">Comment</label>
+            <textarea name="comment" id="comment-text" placeholder="required"></textarea>
+            <button class="btn btn-outline-secondary" type="submit">Save</button>
+          </form>
+          <form action="/coffees/<%= coffee._id %>/reviews/<%= review.id %>?_method=DELETE" method="POST">
+            <button class="btn btn-outline-danger" type="submit" style="display: inline-block;">Delete</button>
+          </form>
+        </div>
       </div>
-  
-      <label for="comment-textarea">Comment</label>
-      <textarea name="comment" id="comment-textarea" placeholder="<%= review.comment %>"></textarea>
-  
-      <button class="btn" type="submit">Edit</button>
-      </form>
-    <% } %> 
-      <% if (review.owner.equals(user?.profile._id)) { %>
-      <form 
-      action="/coffees/<%= coffee._id %>/reviews/<%= review.id %>?_method=DELETE" method="POST"
-      style="display: inline-block;">
-      <button class="btn" type="submit">Delete</button>
-      </form>
-    <% } %>
+          <% } %>
+        </div>
+        </div>
   <% }) %>
   <% } %>
-</ul>
-</section>
 
+</section>
 
 <%- include('../partials/footer') %>
