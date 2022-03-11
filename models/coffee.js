@@ -26,7 +26,8 @@ const coffeeSchema = new Schema({
     // year: { type: Number, min: 2020, max: 9999, required: true }
     type: String, required: true
   },
-  roastDate: { type: Date, required: true },
+  roastDate: { 
+    type: type: String, required: true },
   process: { type: String, enum: ["Washed", "Natural"], required: true },
   tasteNote: {
     taste1: { type: String, required: true },
