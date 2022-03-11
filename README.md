@@ -5,8 +5,8 @@ This web site welcomes people who care about sustainably produced and distribute
 * details of each coffee beans and reviews
 * members (other users) with their go-to coffee brewing recipes
 
-![alt text](../images/index.png)
-![alt text](../images/coffees.png)
+![alt text](https://trello.com/c/w4URljmH/25-indexpng)
+![alt text](https://trello.com/c/75Ic17FH/27-coffeesjpg)
 
 ## [Visit Coffee Snob Society](https://coffee-reviews-gj.herokuapp.com/)
 
