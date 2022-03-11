@@ -41,6 +41,40 @@ nav, li {
 .navbar-brand {
   font-size: 2rem;
 }
+
+.signin-out {
+  padding: .2em;
+  padding-right: .5em;
+}
+
+.users-name {
+  padding-right: .5em;
+}
+
+img {
+  margin: 0 auto;
+height: 51.5vmax;
+}
+
 #loginout-btn {
-  all: unset;
+  color: black;
+  text-decoration: underline;
+}
+
+#loginout-btn:hover {
+  color: gray;
+  text-decoration: underline;
+}
+
+.dropdown-item {
+  color: rgb(107, 107, 107);
+}
+
+.dropdown-item:active {
+  background-color: rgb(223, 223, 223);
+  color: black;
+}
+
+#navbar-items:active {
+  color: black;
 }
