@@ -1,7 +1,7 @@
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
 
-<section>
+<section class="container">
   <div class="card">
     <div class="card-body">
     <h1 class="coffee-name">
@@ -81,15 +81,13 @@
       <div class="collapse multi-collapse" id="multiCollapseExample2">
         <div class="card card-body">
           <form action="/coffees/<%= coffee._id %>/reviews/<%= review.id %>?_method=PATCH" method="POST"
-            style="display: inline-block;">
-            <div id="users-taste-notes"><br>
+            style="display: inline-block;"><br>
               <label for="taste1-input">Taste 1</label>
               <input type="text" name="taste1" id="taste1-input" value="<%= review.tastes.taste1 %>">
               <label for="taste2-input">Taste 2</label>
               <input type="text" name="taste2" id="taste2-input" value="<%= review.tastes.taste2 %>">
               <label for="taste3-input">Taste 3</label>
-              <input type="text" name="taste3" id="taste3-input" value="<%= review.tastes.taste3 %>">
-            </div><br>
+              <input type="text" name="taste3" id="taste3-input" value="<%= review.tastes.taste3 %>"><br>
             <label for="comment-text">Comment</label>
             <textarea name="comment" id="comment-text" placeholder="required"></textarea>
             <button class="btn btn-outline-secondary" type="submit">Save</button>

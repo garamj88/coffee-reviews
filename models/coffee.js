@@ -27,7 +27,7 @@ const coffeeSchema = new Schema({
     type: String, required: true
   },
   roastDate: { 
-    type: type: String, required: true },
+    type: String, required: true },
   process: { type: String, enum: ["Washed", "Natural"], required: true },
   tasteNote: {
     taste1: { type: String, required: true },

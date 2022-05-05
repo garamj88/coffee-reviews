@@ -2,46 +2,50 @@
 <link rel="stylesheet" href="/stylesheets/coffees/new.css" />
 <%- include('../partials/nav') %>
 
-<section>
+<section class="container">
   <h1><%= title %></h1><br>
   
- <form id="new-form" action="/coffees" method="POST">
+ <form class="row g-3" id="new-form" action="/coffees" method="POST">
     <h4 style="color: rgb(255, 0, 0);">*All fields are required</h4><br>
-    <h3><label for="name-input">Name*</label>
-    <input type="text" name="name" id="name-input" placeholder="required">
+
+    <div class="col-md-6">
+    <label for="name-input" class="form-label">Name*</label>
+    <input type="text" class="form-control" name="name" id="name-input" required="true" placeholder="required">
+  </div>
 
     <label for="producer-input">Producer*</label>
-    <input type="text" name="producer" id="producer-input" placeholder="required"><br><br>
+    <input type="text" name="producer" id="producer-input" required="true" placeholder="required"><br><br>
 
     <label for="region-input">Region*</label>
-    <input type="text" name="region" id="region-input" placeholder="required">
+    <input type="text" name="region" id="region-input" required="true" placeholder="required">
 
     <label for="country-input">Country*</label>
-    <input type="text" name="country" id="country-input" placeholder="required">
+    <input type="text" name="country" id="country-input" required="true" placeholder="required">
     <br><br>
 
     <div class="taste-notes-from-roasters">Taste Notes from Roasters<br>
     <label for="taste1-input">Taste 1*</label>
-    <input type="text" name="tasteNote.taste1" id="taste1-input" placeholder="required">
+    <input type="text" name="tasteNote.taste1" id="taste1-input" required="true" placeholder="required">
     <label for="taste2-input">Taste 2*</label>
-    <input type="text" name="tasteNote.taste2" id="taste2-input" placeholder="required">
+    <input type="text" name="tasteNote.taste2" id="taste2-input" required="true" placeholder="required">
     <label for="taste3-input">Taste 3*</label>
-    <input type="text" name="tasteNote.taste3" id="taste3-input" placeholder="required">
+    <input type="text" name="tasteNote.taste3" id="taste3-input" required="true" placeholder="required">
   </div><br>
 
   <label for="varietal-input">Varietal*</label>
-  <input type="text" name="varietal" id="varietal-input " placeholder="required">
+  <input type="text" name="varietal" id="varietal-input " required="true" placeholder="required">
 
     <label for="harvest-input">Harvest*</label>
     <input
       type="text"
       name="harvest"
       id="harvest-input"
+      required="true"
       placeholder="example: Jan 2021"
     />
 
     <label for="process-select">Process*</label>
-    <select name="process" id="process-select">
+    <select name="process" id="process-select" required="true">
       <option value="Washed">Washed</option>
       <option value="Natural">Natural</option>
     </select><br><br>
@@ -54,6 +58,7 @@
       type="date"
       name="roastDate"
       id="roast-date-input"
+      required="true" 
       placeholder="required"
     /></h3><br><br>
 
